@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1 id="title">hello world</h1>
+<h1 id="abc">change hello</h1>
+<button onclick="change()">change</button>
+<br><br>
+<!--------------------------------------------->
+<!--3-->
+<input id="n1" >
+<input id="n2" >
+<button onclick="resultt()">add</button>
+<p id="r">result</p>
+
+<!--------------------------------------------------->
+
+<!--
+ MATH.RANDOM
+ MATH.FLOOR --
+
+ -->
+
+<!--  4 GENERATE RANDOM NUMBER PROJECT -->
+
+<h1> guess number</h1>
+<input id="guess">
+<button onclick="check()">check</button>
+<p id="result"> you are right / wrong </p>
+<p id="score">score</p>
+
+<!-- 5. css in dom -->
+
+<style>
+  
+  div{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+  }
+
+  .widthmax{
+    width: 900px;
+
+  }
+
+
+
+</style>
+
+<div id="box"></div>
+<button onclick="click()">change color</button>
+<button onclick="click1()">change </button>
+<!--------------------------------------------------------------->
+
+<!---  6. TASK-1 --------------------------------------------------->
+<br>
+<input id="ip1" onkeyup="show()">     <!--when letters are typed-->
+<button onclick="show()">button</button>
+<h1 id="result1"></h1>
+
+<!---  7. TASK-2 --------------------------------------------------->
+
+<br><br>
+
+<button onclick="repeat()">add</button>
+<h2 id="disp"></h2>
+
+<!---  7. TASK-2.1 one after another --------------------------------------------------->
+
+<br><br>
+
+<button onclick="rep()">add</button>
+<h1 id="disp1"></h1>
+
+
+
+<!---------- TASK 3 change color---------------------------->
+
+<button id="clrch" onclick="color()">change me!</button>
+
+<!---------- TASK 4 display names ---------------------------->
+
+<h1 id="b"> </h1>
+<button id="b1" onclick="o(event)">rose</button>
+<button id="b2" onclick="o(event)">arose</button>
+<button id="b3" onclick="o(event)">aros</button>
+
+<!------------- TASK 5 DELETING --------------------------------------------------------->
+
+<h1 id="one" onclick="delete1(event)">one</h1>  <!--event object-->
+<h1 id="2" onclick="delete1()">2</h1>
+<h1 id="3" onclick="delete1()">3</h1>
+<h1 id="4" onclick="delete1()">4</h1>
+<h1 id="5" onclick="delete1()">5</h1>
+<h1 id="6" onclick="delete1()">6</h1>
+
+
+
+
+
+
+
+
+
+
+<!----------------------------->
+
+<script>
+  var a =  document.getElementById("title");
+  console.log(a.textContent);       //prints only the content present inside
+  a.textContent="bye";      //changing the content from hello to bye , but prints hello in console
+//---------------------------------------------------------------
+
+  function change(){
+    var b= document.getElementById("abc");
+    b.textContent="byeeee";
+  }
+
+//--3---------------------------------------------------
+
+
+var res=document.getElementById("r");
+
+
+function resultt()
+{
+  var b1=Number(n1.value)     //toget the value in n1
+var b2=Number (n2.value)    // if number func not given, we would get 1010 becz stored as string  
+var tot=b1+b2;
+
+res.textContent=tot   //only on clicking the button, result  appears
+
+}
+
+//--------------------------------------------------------------------
+
+
+//4. generate no
+// select input, 
+
+/*
+<h1> guess number</h1>
+<input id="guess">
+<button>check</button>
+<p id="result"> you are right / wrong </p>*/
+
+var guessno = document.getElementById("guess")
+var res = document.getElementById("result")
+var score = document.getElementById("score")
+
+var randomno=Math.floor(Math.random()*10)+1
+
+var tscore=10
+
+function check(){
+
+  var enterno = guessno.value
+
+  if(randomno==enterno)
+{
+  console.log("right");
+  res.textContent="right"
+  alert("you won")
+}
+else{
+  console.log("wrong");
+  res.textContent="wrong"
+  tscore-=1;
+  score.textContent="score"+tscore
+}
+}
+//----------------------------------------------------------------
+// 5. css dom
+
+var box1=document.getElementById("box")
+
+function click()
+{
+  box1.style.background="red"   // to change black to red
+}
+
+function click1(){
+  box1.setAttribute("class","widthmax")
+}
+
+//----------------------- TASK 1   -------------------------------- 
+
+var a= document.getElementById("ip1")
+var r= document.getElementById("result1")
+
+function show()
+{
+r.textContent=a.value //in input v have value, not textcontent
+}
+
+/*---------- TASK 2 ---------------------------- */
+
+var h2=document.getElementById("disp");
+
+function repeat()
+{
+h2.append("hello")
+}
+
+
+/*---------- TASK 2.1 ---------------------------- */
+
+var div=document.getElementById("disp1");
+
+function rep()
+{
+  var ab = document.createElement("h2") // valid tag
+  ab.textContent="hello"
+  div.append(ab)
+}
+
+// h1 tag gets added
+
+/*---------- TASK 3 ---------------------------- */
+
+function color()
+{
+  clrch.style.backgroundColor="red"
+}
+
+/*---------- TASK 4 ---------------------------- */
+
+var h1=document.getElementById("b")
+function o(event)
+{
+  h1.textContent=event.target.textContent   //event.target gets the content in btn
+}
+
+
+/* ------------------ TASK 5 -------------------*/
+
+var del=document.getElementById("one")
+function delete1()
+{
+event.target.remove()   /*one's / each individual event is passed to js, and deletes*/
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

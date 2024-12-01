@@ -1,0 +1,121 @@
+<!-- inner html to know how each  differs, comment out each one and run -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="one"> 
+        <h1>hello</h1> 
+    </div>
+
+    <!---------------------- 2. SELECTORS ----------------------------------------->
+
+    <div class="two"> 
+        hello 
+    </div>
+
+    <h1 class="all">1</h1>
+    <h1 class="all">2</h1>
+    <h1 class="all">3</h1>
+    <h1 class="all">4</h1>
+    <h1 class="all">5</h1>
+
+    <div class="c"> 
+        <h1>hello</h1>
+        <h1>two</h1> 
+    </div>
+
+    <!-- TO DO LIST -------------------------------------------------------------->
+
+<input id="inp">
+<button onclick="add()"> ADD ITEMS</button>
+<ul id="list">
+    <li> HELLO 
+        <button onclick="deletes(event)"> DELETE</button>
+    </li>
+</ul>
+
+
+
+
+
+
+
+    <!-------------------------------------------------------------->
+    <script>
+    
+    var a=document.getElementById("one")
+    console.log(a) // o/p  <div id="one"> <h1> hello</h1> </div>
+    console.log(a.innerHTML)  // <h1> hello </hello
+    /*using innerHTML we can take the tag as well as the html content present inside the tag*/
+    
+    a.innerHTML="bye"  //hello changes to bye
+    
+    a.innerHTML="<h1> bye </h1>"  // the bye is printed in h1 format
+    
+    a.textContent="<h1> bye </h1>" // only this will be printed
+    
+    /*----------------------- 2. TYPES OF SELECTORS  ----------------------------------------------------------------*/
+    
+    var b=document.getElementById("two")  // ive used two as a class, but how to select the class use QUERY SELECTOR
+  var c= document.querySelector(".two") // to indicate two is a class we use (.) / can select class, id, tag
+    console.log(c)
+    
+    /*h1 tag on using query selector -> selects the first h1 which is seen 
+    <h1> one </h1>
+    <h1>two </h1>
+    
+    one is returned as answer*/
+    
+    // to print all the h1's
+    
+    var all=document.querySelectorAll(".all")
+    console.log(all) // NodeList(5) [h1.all, h1.all, h1.all, h1.all, h1.all]
+ // returns all in format of array 
+
+ // to print the elements put    console.log(all[1])
+// to print all the elements and get only the content use for loop and textContent 
+
+
+
+var c = document.querySelector(".c"); // Use ".c" to select the element with class "c"
+var create_el = document.createElement("h1");
+create_el.textContent = "heyy";
+c.insertAdjacentElement("beforebegin", create_el);
+
+/*-------------- TO DO LIST --------------------------------------*/
+
+// whenever the addd button is called a list must be created
+
+var ul=document.getElementById("list")
+
+function add()
+{
+var new_item=document.createElement("li")
+new_item.innerHTML=inp.value + "<button onclick='deletes(event)'> delete </button>"     //give inner html to get only the content and append in the list
+ul.append(new_item) //  append the li list in ul container
+}
+
+function deletes()
+{
+event.target.parentElement.remove()
+}
+
+// event.target the button is seelcted
+
+
+
+
+
+
+
+    
+    
+    
+    </script>
+</body>
+</html>
